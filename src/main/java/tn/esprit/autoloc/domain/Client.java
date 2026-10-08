@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -33,4 +34,11 @@ public class Client {
     private String numPermis;
 
     private LocalDate dateInscription;
+
+    // 1 Client → N Reservations
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.PERSIST
+    )
+    private List<Reservation> reservations;
 }

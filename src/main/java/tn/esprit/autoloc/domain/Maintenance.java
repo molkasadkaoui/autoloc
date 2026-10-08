@@ -23,4 +23,8 @@ public class Maintenance {
 
     @Column(length = 500)
     private String description;
+
+    // N Maintenance → 1 Vehicule
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Vehicule vehicule;
 }
